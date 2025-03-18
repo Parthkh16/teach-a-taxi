@@ -1,0 +1,12 @@
+# 🚖 Teach a Taxi - Q Learning
+This project trains a taxi using **Reinforcement Learning (Q-Learning)** to pick up and drop off passengers efficiently.
+
+## 📌 Features
+✅ Uses **Gymnasium's Taxi-v3 environment**  
+✅ Implements **Q-Learning** for training  
+✅ Evaluates the agent (timesteps, penalties)  
+✅ Visualizes the trained agent  
+
+## 🛠 Installation
+```bash
+pip install gymnasium numpy matplotlib

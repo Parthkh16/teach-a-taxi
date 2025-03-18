@@ -1,12 +1,73 @@
-# 🚖 Teach a Taxi - Q Learning
-This project trains a taxi using **Reinforcement Learning (Q-Learning)** to pick up and drop off passengers efficiently.
 
-## 📌 Features
-✅ Uses **Gymnasium's Taxi-v3 environment**  
-✅ Implements **Q-Learning** for training  
-✅ Evaluates the agent (timesteps, penalties)  
-✅ Visualizes the trained agent  
+🚖 Teach a Taxi - Q-Learning
+This project trains a taxi agent using Q-Learning (Reinforcement Learning) to pick up and drop off passengers efficiently in a grid-based environment.
 
-## 🛠 Installation
-```bash
+✅ What the project does:
+
+The agent learns through trial and error using rewards & penalties.
+Uses OpenAI Gymnasium’s Taxi-v3 environment.
+Implements Q-learning to train the taxi.
+Evaluates performance (timesteps & penalties).
+Visualizes the trained agent’s movements.
+🛠 Installation Instructions
+1️⃣ Install Dependencies
+Run the following command in your terminal:
+
+
 pip install gymnasium numpy matplotlib
+This will install:
+
+gymnasium (for RL environment)
+numpy (for matrix operations)
+matplotlib (optional, for visualization)
+🚀 Running the Project
+2️⃣ Open and Run the Notebook
+Open Jupyter Notebook
+Load Taxi_Q_Learning.ipynb
+Run all the cells sequentially
+3️⃣ If Running a Python Script
+If you want to run it as a Python script, create a main.py file and paste:
+
+
+import gymnasium as gym
+import numpy as np
+
+# Initialize environment
+env = gym.make("Taxi-v3", render_mode="ansi")
+
+# Initialize Q-table
+q_table = np.zeros([env.observation_space.n, env.action_space.n])
+
+# Training loop
+for _ in range(100000):
+    state, _ = env.reset()
+    done = False
+    while not done:
+        action = np.argmax(q_table[state])  # Choose best action
+        state, reward, done, _, _ = env.step(action)
+
+# Test the agent
+state, _ = env.reset()
+done = False
+while not done:
+    print(env.render())  # Show environment
+    action = np.argmax(q_table[state])
+    state, reward, done, _, _ = env.step(action)
+Then, run the script with:
+
+
+python main.py
+📊 Sample Results
+After training 100,000 episodes, the agent achieves:
+
+
+Results after 100 episodes:
+Average timesteps per episode: 13.11
+Average penalties per episode: 0.0
+🚀 This means the taxi learns to reach the destination efficiently without making mistakes.
+
+Before Training (Random Agent)
+Takes thousands of steps
+Many wrong drop-offs (-10 penalty each time)
+After Training (Q-Learning Agent)
+Takes only ~13 steps per trip

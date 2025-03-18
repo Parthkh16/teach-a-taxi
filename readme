@@ -62,7 +62,7 @@ After training 100,000 episodes, the agent achieves:
 
 
 Results after 100 episodes:
-Average timesteps per episode: 13.11
+Average timesteps per episode: 12.88
 Average penalties per episode: 0.0
 🚀 This means the taxi learns to reach the destination efficiently without making mistakes.
 
